@@ -17,7 +17,7 @@
           "samples": []
         },
         {
-          "name":"BirthdayIsIntent",
+          "name":"AnsweredBirthday",
           "slots":[
             {
               "name":"birthday",
@@ -32,7 +32,7 @@
           ]
         },
         {
-          "name":"LastAgeIsIntent",
+          "name":"AnsweredLastAge",
           "slots":[
             {
               "name":"lastAge",
