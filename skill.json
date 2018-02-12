@@ -5,7 +5,6 @@
         "en-US": {
           "summary": "Sample Short Description",
           "examplePhrases": [
-            "Alexa open rest of my life",
             "Alexa open rest of your life"
           ],
           "name": "Rest of your life",
@@ -14,8 +13,7 @@
         "ja-JP": {
           "summary": "短い説明",
           "examplePhrases": [
-            "アレクサ 、残りの人生を教えて",
-            "アレクサ 、残りの人生を開いて"
+            "アレクサ、残りの人生を開いて"
           ],
           "name": "残りの人生",
           "description": "詳しい説明"
