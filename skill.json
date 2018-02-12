@@ -5,17 +5,25 @@
         "en-US": {
           "summary": "Sample Short Description",
           "examplePhrases": [
-            "Alexa open hello world",
-            "Alexa tell hello world I am Jeff",
-            "Alexa tell hello world my name is Peter"
+            "Alexa open rest of my life",
+            "Alexa open rest of your life"
           ],
-          "name": "alexa-rest-of-your-life",
+          "name": "Rest of your life",
           "description": "Sample Full Description"
+        },
+        "ja-JP": {
+          "summary": "短い説明",
+          "examplePhrases": [
+            "アレクサ 、残りの人生を教えて",
+            "アレクサ 、残りの人生を開いて"
+          ],
+          "name": "残りの人生",
+          "description": "詳しい説明"
         }
       },
       "isAvailableWorldwide": true,
       "testingInstructions": "Sample Testing Instructions.",
-      "category": "EDUCATION_AND_REFERENCE",
+      "category": "CALCULATORS",
       "distributionCountries": []
     },
     "apis": {

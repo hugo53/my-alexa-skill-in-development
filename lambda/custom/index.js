@@ -13,43 +13,42 @@ exports.handler = function(event, context) {
 
 var handlers = {
   'LaunchRequest': function () {
-    this.emit('SayHello');
+    this.emit('AskYourBirthday');
   },
-  'HelloWorldIntent': function () {
-    this.emit('SayHello');
+
+  'BirthdayIsIntent': function () {
+    // TODO: Save birthday into somewhere in session
+    var birthday = this.event.request.intent.slots.birthday.value;
+
+    this.emit('AskHowLongYouWantToLive');
   },
-  'MyNameIsIntent': function () {
-    this.emit('SayHelloName');
+
+  'LastAgeIsIntent': function () {
+    // TODO: Save lastAge into somewhere in session
+    var lastAge = this.event.request.intent.slots.lastAge.value;
+
+    this.emit('AnserRestOfYourLife');
   },
-  'SayHello': function () {
-    this.response.speak('Hello World!')
-      .cardRenderer('hello world', 'hello world');
-    this.emit(':responseReady');
-  },
-  'SayHelloName': function () {
-    var name = this.event.request.intent.slots.name.value;
-    this.response.speak('Hello ' + name)
-      .cardRenderer('hello world', 'hello ' + name);
-    this.emit(':responseReady');
-  },
+
   'SessionEndedRequest' : function() {
     console.log('Session ended with reason: ' + this.event.request.reason);
   },
-  'AMAZON.StopIntent' : function() {
-    this.response.speak('Bye');
-    this.emit(':responseReady');
-  },
-  'AMAZON.HelpIntent' : function() {
-    this.response.speak("You can try: 'alexa, hello world' or 'alexa, ask hello world my" +
-      " name is awesome Aaron'");
-    this.emit(':responseReady');
-  },
-  'AMAZON.CancelIntent' : function() {
-    this.response.speak('Bye');
-    this.emit(':responseReady');
-  },
+
   'Unhandled' : function() {
-    this.response.speak("Sorry, I didn't get that. You can try: 'alexa, hello world'" +
-      " or 'alexa, ask hello world my name is awesome Aaron'");
+    this.emit(':tell', "Sorry, I didn't get that.");
+  },
+
+  'AskYourBirthday': function () {
+    this.emit(':ask', 'Please tell me your birthday.');
+  },
+
+  'AskHowLongYouWantToLive': function () {
+    this.emit(':ask', 'Please tell me how long you want to live.');
+  },
+
+  'AnserRestOfYourLife': function () {
+    // TODO: Calculate a rest of your life from birthday and lastAge
+
+    this.emit(':tell', 'Rest of your life is 18,250 days.  It is 438,000 hours.');
   }
 };
