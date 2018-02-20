@@ -37,9 +37,12 @@ exports.handler = function(event, context) {
 };
 
 var handlers = {
-  'LaunchRequest': function () {
+  "LaunchRequest": function () {
+    this.emit('CalculateRestOfYourLife');
+  },
+  "CalculateRestOfYourLife": function () {
     this.handler.state = '_ASKING_BIRTHDAY_STATE';
-    this.emitWithState('Unhandled', false);
+    this.emitWithState('Unhandled');
   },
   "AMAZON.CancelIntent": function() {
     this.emit(':tell', this.t("BYE"));
@@ -61,7 +64,7 @@ var answeringBirthdayHandlers = Alexa.CreateStateHandler('_ANSWERING_BIRTHDAY_ST
     var birthday = this.event.request.intent.slots.birthday.value;
 
     this.handler.state = '_ASKING_LAST_AGE_STATE';
-    this.emitWithState('Unhandled', false);
+    this.emitWithState('Unhandled');
   }
 });
 

@@ -5,6 +5,15 @@
       "types":[],
       "intents":[
         {
+          "name": "CalculateRestOfYourLife",
+          "samples": [
+            "残りの人生",
+            "残りの人生の時間",
+            "残りの人生を教えて",
+            "残りの人生の時間を教えて"
+          ]
+        },
+        {
           "name": "AMAZON.CancelIntent",
           "samples": []
         },

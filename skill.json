@@ -2,27 +2,23 @@
   "manifest": {
     "publishingInformation": {
       "locales": {
-        "en-US": {
-          "summary": "Sample Short Description",
-          "examplePhrases": [
-            "Alexa open rest of your life"
-          ],
-          "name": "Rest of your life",
-          "description": "Sample Full Description"
-        },
         "ja-JP": {
           "summary": "短い説明",
           "examplePhrases": [
-            "アレクサ、残りの人生を開いて"
+            "アレクサ、残りの人生を教えて"
           ],
           "name": "残りの人生",
-          "description": "詳しい説明"
+          "smallIconUri": "",
+          "description": "人生の残りの時間を教えます。「残りの人生を教えて」と言ってみてください。",
+          "largeIconUri": ""
         }
       },
-      "isAvailableWorldwide": true,
-      "testingInstructions": "Sample Testing Instructions.",
+      "isAvailableWorldwide": false,
+      "testingInstructions": "人生の残りの時間を教えます。",
       "category": "CALCULATORS",
-      "distributionCountries": []
+      "distributionCountries": [
+        "JP"
+      ]
     },
     "apis": {
       "custom": {
@@ -31,6 +27,13 @@
         }
       }
     },
-    "manifestVersion": "1.0"
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
   }
 }
