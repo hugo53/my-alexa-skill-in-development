@@ -75,6 +75,8 @@ var askingLastAgeHandlers = Alexa.CreateStateHandler('_ASKING_LAST_AGE_STATE', {
   }
 });
 
+// NOTE: Rest of life should be based on 平均余命
+// see: http://www.mhlw.go.jp/toukei/saikin/hw/life/life10/01.html
 var answeringLastAgeHandlers = Alexa.CreateStateHandler('_ANSWERING_LAST_AGE_STATE', {
   'AnsweredLastAge': function () {
     var lastAge = this.event.request.intent.slots.lastAge.value;
