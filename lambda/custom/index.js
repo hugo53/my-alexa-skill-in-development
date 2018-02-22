@@ -8,7 +8,6 @@ var languageStrings = {
     'translation': {
       'BYE': 'Good bye.',
       'ASK_BIRTHDAY': 'Please tell me your birthday.',
-      'ASK_LAST_AGE': 'Please tell me how long you want to live.',
       'ANSWER_REST_OF_YOUR_LIFE': 'Rest of your life is 18,250 days.  It is 438,000 hours.'
     }
   },
@@ -16,7 +15,6 @@ var languageStrings = {
     'translation': {
       'BYE': '終了します。',
       'ASK_BIRTHDAY': 'あなたの誕生日を教えてください。',
-      'ASK_LAST_AGE': 'あなたは何歳まで生きたいですか。',
       'ANSWER_REST_OF_YOUR_LIFE': 'あなたの残りの人生は18,250日で、時間で表すと438,000時間です。'
     }
   }
@@ -29,9 +27,7 @@ exports.handler = function(event, context) {
   alexa.registerHandlers(
     handlers,
     askingBirthdayHandlers,
-    answeringBirthdayHandlers,
-    askingLastAgeHandlers,
-    answeringLastAgeHandlers
+    answeringBirthdayHandlers
   );
   alexa.execute();
 };
@@ -59,27 +55,11 @@ var askingBirthdayHandlers = Alexa.CreateStateHandler('_ASKING_BIRTHDAY_STATE', 
   }
 });
 
+// NOTE: Rest of life should be based on 平均余命
+// see: http://www.mhlw.go.jp/toukei/saikin/hw/life/life10/01.html
 var answeringBirthdayHandlers = Alexa.CreateStateHandler('_ANSWERING_BIRTHDAY_STATE', {
   'AnsweredBirthday': function () {
     var birthday = this.event.request.intent.slots.birthday.value;
-
-    this.handler.state = '_ASKING_LAST_AGE_STATE';
-    this.emitWithState('Unhandled');
-  }
-});
-
-var askingLastAgeHandlers = Alexa.CreateStateHandler('_ASKING_LAST_AGE_STATE', {
-  'Unhandled': function () {
-    this.handler.state = '_ANSWERING_LAST_AGE_STATE';
-    this.emit(':ask', this.t("ASK_LAST_AGE"));
-  }
-});
-
-// NOTE: Rest of life should be based on 平均余命
-// see: http://www.mhlw.go.jp/toukei/saikin/hw/life/life10/01.html
-var answeringLastAgeHandlers = Alexa.CreateStateHandler('_ANSWERING_LAST_AGE_STATE', {
-  'AnsweredLastAge': function () {
-    var lastAge = this.event.request.intent.slots.lastAge.value;
 
     this.handler.state = '';
     this.emit(':tell', this.t("ANSWER_REST_OF_YOUR_LIFE"));
