@@ -61,7 +61,11 @@ var answeringBirthdayHandlers = Alexa.CreateStateHandler('_ANSWERING_BIRTHDAY_ST
   'AnsweredBirthday': function () {
     var birthday = this.event.request.intent.slots.birthday.value;
 
+    // NOTE: Log for debug, so remove it later
+    console.log(birthday);
+
     this.handler.state = '';
+
     this.emit(':tell', this.t("ANSWER_REST_OF_YOUR_LIFE"));
   }
 });
