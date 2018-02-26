@@ -8,6 +8,7 @@ var languageStrings = {
     'translation': {
       'BYE': 'Good bye.',
       'ASK_BIRTHDAY': 'Please tell me your birthday.',
+      'ASK_BIRTHDAY_AGAIN': 'Sorry, I couldn\'t understand.  Please tell me your birthday.',
       'ANSWER_REST_OF_YOUR_LIFE': 'Rest of your life is 18,250 days.  It is 438,000 hours.'
     }
   },
@@ -15,6 +16,7 @@ var languageStrings = {
     'translation': {
       'BYE': '終了します。',
       'ASK_BIRTHDAY': 'あなたの誕生日を教えてください。',
+      'ASK_BIRTHDAY_AGAIN': 'すみません、わかりませんでした。あなたの誕生日を教えてください。',
       'ANSWER_REST_OF_YOUR_LIFE': 'あなたの残りの人生は18,250日で、時間で表すと438,000時間です。'
     }
   }
@@ -62,10 +64,14 @@ var answeringBirthdayHandlers = Alexa.CreateStateHandler('_ANSWERING_BIRTHDAY_ST
     var birthday = this.event.request.intent.slots.birthday.value;
 
     // NOTE: Log for debug, so remove it later
-    console.log(birthday);
+    console.log('birthday = ', birthday);
 
     this.handler.state = '';
 
     this.emit(':tell', this.t("ANSWER_REST_OF_YOUR_LIFE"));
+  },
+  'Unhandled': function () {
+    this.handler.state = '_ANSWERING_BIRTHDAY_STATE';
+    this.emit(':ask', this.t("ASK_BIRTHDAY_AGAIN"));
   }
 });
