@@ -39,22 +39,6 @@
             "私の誕生日は {birthday} です",
             "{birthday} 生まれです"
           ]
-        },
-        {
-          "name":"AnsweredLastAge",
-          "slots":[
-            {
-              "name":"lastAge",
-              "type":"AMAZON.NUMBER"
-            }
-          ],
-          "samples":[
-            "{lastAge}",
-            "{lastAge} 歳",
-            "{lastAge} 歳まで生きる",
-            "{lastAge} 歳まで生きます",
-            "{lastAge} 歳まで生きたい"
-          ]
         }
       ]
     }
